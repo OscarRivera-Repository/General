@@ -25,8 +25,10 @@ public class AnalizadorLexico {
     // Analiza una línea y devuelve un array con la linea y sus errores
     private static ArrayList<String> AnalizarLinea(String linea, int pos){
         ArrayList<String> resultado = new ArrayList<>();
-        
+        // La línea original siempre se incluye
         resultado.add(Enumerar(pos) + " " + linea);
+        // Se eliminan primero los comentarios porque se deben ignorar
+        String lineaSinComentarios = EliminarComentarios(linea);
         
         return resultado;
     }
@@ -41,5 +43,32 @@ public class AnalizadorLexico {
         }
         
         return numero;
+    }
+    
+    // Elimina los comentarios en una línea, se reemplazan por espcaios vacios
+    private static String EliminarComentarios(String linea){
+        String nuevaLinea = "";
+        int len = linea.length();
+        
+        if(len == 0){return nuevaLinea;}
+        
+        int i = 0;
+        char letraActual;
+        boolean esComentario = false;
+
+        while(i<len ){
+            letraActual = linea.charAt(i);
+            if(letraActual == '!'){
+                esComentario = true;
+            }
+            if(esComentario){
+                nuevaLinea += " ";
+            }else{
+                nuevaLinea += letraActual;
+            }
+            i++;
+        }
+        
+        return nuevaLinea;
     }
 }

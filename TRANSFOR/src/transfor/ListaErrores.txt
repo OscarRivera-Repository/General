@@ -1,0 +1,2 @@
+001: Línea mayor a 80 caracteres
+002: Comunnas 1-5 con valor diferente a etiqueta

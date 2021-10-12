@@ -1,0 +1,14 @@
+☺ Lectura de archivo desde línea de comandos (10/7/4)
+☺ Generación de archivo de errores (10/7/4)
+○ Ejecución del programa compilado (10/7/4)
+○ Validar que PROGRAM solo aparezca una vez al inicio (10/7/4)
+○ Aceptar e ignirar líneas en blanco (10/7/4)
+☺ Ignorar comentarios (5/3/2)
+○ Definición correcta de variables (20/15/8)
+○ Validación de & y multilíneas (10/7/4)
+○ Uso de palabras reservadas al inicio de la línea (10/7/4)
+○ Formato de línea (5/3/2)
+    no mas de 80 caracteres
+    solo etiquetas en columnas 1 a 5
+    ignorar columnas 73-80 excepto &
+    
