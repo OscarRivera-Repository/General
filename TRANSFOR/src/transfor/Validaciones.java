@@ -22,6 +22,10 @@ public class Validaciones {
         return "";
     }
     
+    /*
+        Se vaidan etiquetas
+        Se asume que uso de & se validó primero
+    */
     public static String EtiquetasCorrectas(String linea){
         String error = "Error 002: Etiqueta inválida";
         // La etiqueta es de tamaño 5 seguida de un espacio
@@ -42,7 +46,19 @@ public class Validaciones {
         return "";
     }
    
+    /*
+        Valida que columas 73-80 estén vacías
+        Se asume que largo de línea se validó primero
+        Se asume que uso de & se validó primero        
+    */
     public static String FinLineaValido(String linea){
+        String error = "Error 003: Fin de linea debe ir vacío";
+        // Si hay menos de 73 caracteres se omite validación
+        if (linea.length() < 72){return "";}
+        // Se validan el resto de posiciones
+        for(int i = 72; i < linea.length(); i++){
+            if(linea.charAt(i) != ' '){return error;}
+        }
         return "";
     }
     
