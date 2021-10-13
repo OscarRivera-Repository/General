@@ -1,5 +1,7 @@
 package transfor;
 
+import java.util.ArrayList;
+
 public class Validaciones {
     /*
         Algunas validaciones ignoran los espacios vacios,
@@ -15,6 +17,7 @@ public class Validaciones {
         return nuevaLinea;
     }
     
+    // Se valida el tamaño máximo de línea
     public static String Solo80Caracteres(String linea){
         if(linea.length() > 80){
             return "Error 001: Línea mayor a 80 caracteres";
@@ -62,7 +65,53 @@ public class Validaciones {
         return "";
     }
     
-    public static String UsoProgramCorrecto(String linea){
+    /*
+        Valida que PROGRAM solo aparezca una vez al inicio de línea
+        Asume que ya se validaron etiquetas y &
+    */    
+    public static String UsoProgramCorrecto(ArrayList<String> lineas){
+        int programCount = 0;
+        String lineaActual;
+        boolean inicioVacio = true;
+                
+        for(int i = 0; i < lineas.size(); i++){
+            lineaActual = lineas.get(i);
+            lineaActual = QuitarEspacios(lineaActual);
+            // Program es la primera instrucción, se omiten línea vacías
+            if(lineaActual.length() != 0){ inicioVacio = false; }
+            // Solo se cuenta el primer uso de program
+            if(inicioVacio && 
+               programCount == 0 && 
+               lineaActual.toLowerCase().startsWith("program "))
+            {
+                programCount ++;
+                continue;
+            } 
+            // Si program se repite se retorna error
+            if(programCount >= 1 && 
+               lineaActual.toLowerCase().startsWith("program "))
+            {
+                return "Error 004: PROGRAM solo se debe declarar una vez al inicio";
+            }
+        }
+        
         return "";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private static ArrayList<String> Tokens(){
+        ArrayList<String> tokens = new ArrayList<>();
+        tokens.add("");
+        
+        return tokens;
     }
 }

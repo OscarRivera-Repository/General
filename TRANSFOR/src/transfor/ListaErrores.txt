@@ -1,3 +1,4 @@
 001: Línea mayor a 80 caracteres
 002: Comunnas 1-5 con valor diferente a etiqueta
-003: Fin de linea debe ir vacío
+003: Fin de línea debe ir vacío
+004: PROGRAM solo se debe declarar una vez al inicio
