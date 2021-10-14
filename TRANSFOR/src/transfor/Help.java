@@ -6,6 +6,7 @@ Contiene mensajes de ayuda para usar el programa
 public class Help {
     // Muestra la ayuda general
     public static void MostrarAyuda(){
+        //set PATH=%PATH%;C:/MinGW/bin
         System.out.println("Uso: java –jar TRANSFOR.jar [nombre-de-archivo]");
         System.out.println("");
         System.out.println("nombre-de-archivo");

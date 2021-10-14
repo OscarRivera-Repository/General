@@ -23,12 +23,13 @@ public class ManejadorArchivos {
         return lineas;
     }
     
+    // Escribe un archivo nuevo
     public static void EscribirResultado(ArrayList<String> resultado, 
                                          String nombreArchivo)
     {
-        String nuevoNombre;
-        nuevoNombre = nombreArchivo.replace(".transfor", "");
-        nuevoNombre = nuevoNombre + "-errores.txt";
+        String nuevoNombre = nombreArchivo;
+        //nuevoNombre = nombreArchivo.replace(".transfor", "");
+        //nuevoNombre = nuevoNombre + "-errores.txt";
         
         // Se crea el archivo
         try {
@@ -55,6 +56,34 @@ public class ManejadorArchivos {
         } 
         catch (IOException e) {
             System.out.println("Excepción al escribir archivo:");
+        }
+    }
+    
+    public static void EscribirBat(String nombreArchivo)
+    {
+        // Se crea el archivo
+        try {
+            File archivo = new File(nombreArchivo);
+            if(archivo.exists()){ 
+                archivo.delete(); 
+            }
+            archivo.createNewFile();
+        } 
+        catch (IOException e) {
+            System.out.println("Excepción al crear archivo .bat");
+        }
+        
+        // Se escribe en el archivo
+        try{
+            FileWriter escritor;
+            escritor = new FileWriter(nombreArchivo);
+            String comando = "START /WAIT /B " + nombreArchivo.replace(".bat",".exe");
+            escritor.write(comando + "\r\n");
+            
+            escritor.close();
+        } 
+        catch (IOException e) {
+            System.out.println("Excepción al escribir archivo bat");
         }
     }
 }
